@@ -1,0 +1,12 @@
+function [Delta_pr, Delta_sr] = check_PPFTI(h, omega_p, omega_s)
+%CHECK_PPFTI Functie pentru rezolvarea PPFTI
+%   Este calculat dupa modalitatea descrisa in fisierul de indicatii.
+%   Parametrul res_freqz este doar ca sa setez rezolutia.
+frecv_p = linspace(_0 : omega_p / 2000 : omega_p;
+frecv_s = omega_s : omega_s / 2000 : pi;
+H = freqz(h, 1, frecv_p);
+Delta_pr = max(abs(1 - abs(H)));
+H = freqz(h, 1, frecv_s);
+Delta_sr = max(abs(H));
+end
+
